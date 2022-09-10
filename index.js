@@ -25,6 +25,7 @@ try {
     app.use("/api", require("./controllers/productController"));
     app.use("/api", require("./controllers/orderController"));
     app.use("/api", require("./controllers/messageController"));
+    app.use("/api", require("./controllers/subscriptionController"));
     app.use("/api", require("./controllers/uploadController"));
 
     app.listen(port, () => console.log(`SERVER IS RUNNING ON ${port}`));
