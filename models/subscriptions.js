@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const SubscriptionsSchema = new Schema({
     email: {
         type: String,
-        unique: true,
         required: [true, "email is required"],
     },
     date: {

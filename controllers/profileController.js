@@ -12,7 +12,6 @@ router.post("/profile", (req, res) => {
 router.get("/profile/s/:id", (req, res) => {
     const accountId = req.params.id;
     Profile.findOne({ accountId })
-        .select({})
         .then(value => {
             if (!value) return res
                 .status(400)
@@ -47,7 +46,7 @@ router.put("/profile", (req, res) => {
     let update;
     if (role === "client") update = { address, contactNumber, name, companyName }
     if (role === "staff") update = { address, contactNumber, name, position }
-    if (role === "driver") update = { address, contactNumber, name }
+    if (role === "driver") update = { address, contactNumber, name, vehicle }
     if (role === "owner") update = { address, contactNumber, name }
 
     Profile.findOneAndUpdate({ accountId }, update, { new: true })

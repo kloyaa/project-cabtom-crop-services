@@ -50,6 +50,7 @@ const ProfileSchema = new Schema({
     // Optional Fields
     companyName: { type: String },
     position: { type: String },
+    vehicle: { type: {} },
 
 }, options);
 

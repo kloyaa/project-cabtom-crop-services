@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const { v4: uuidv4 } = require("uuid");
 
 const options = { autoCreate: false };
 
 const OrderSchema = new Schema({
     orderId: {
         type: String,
-        default: uuidv4()
+        required: [true, "orderId is required"],
     },
     header: {
         clientId: {
@@ -29,8 +28,8 @@ const OrderSchema = new Schema({
         },
         status: {
             type: String,
-            enum: ["available", "unavailable"],
-            default: "available"
+            enum: ["available", "unavailable", "pending"],
+            default: "pending"
         },
         deliveryAddress: {
             type: String,
@@ -38,6 +37,9 @@ const OrderSchema = new Schema({
         },
         deliveryStatus: { type: String }
     },
+    payment: {
+        proof: { type: String }
+    }
 }, options);
 
 module.exports = Order = mongoose.model("orders", OrderSchema);
